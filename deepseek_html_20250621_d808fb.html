@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>专属福利领取 | 添加微信一对一咨询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .benefits {
+            text-align: left;
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .benefits li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .btn-wechat {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #07C160;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(7, 193, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-wechat:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 8px rgba(7, 193, 96, 0.4);
+        }
+        .tip {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+        .manual-add {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .manual-add p {
+            margin-bottom: 10px;
+        }
+        .wechat-id {
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎁 添加微信领专属福利</h1>
+        <p>立即解锁以下权益，限前100名用户！</p>
+        
+        <ul class="benefits">
+            <li>行业秘籍PDF《2025最新引流实战指南》</li>
+            <li>1对1专业咨询（原价¥299，今日免费）</li>
+            <li>加入高质量交流社群，对接资源</li>
+        </ul>
+
+        <!-- 跳转按钮 -->
+        <button id="wechatBtn" class="btn-wechat">一键跳转微信添加</button>
+        <div class="tip">点击后按提示操作，如未自动跳转请手动打开微信</div>
+        
+        <!-- 手动添加区域 -->
+        <div class="manual-add">
+            <p>如无法跳转，请手动添加微信：</p>
+            <div class="wechat-id">mcshenjuan</div>
+            <p>添加时请备注<span style="color:#FFD700">"抖音福利"</span>领取专属礼包</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('wechatBtn').addEventListener('click', function() {
+            // 检测设备类型
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            // 跳转逻辑
+            if (isiOS) {
+                // iOS设备：使用universal link方案
+                window.location.href = 'https://your-universal-link.com?wechat=mcshenjuan';
+                
+                // 备用方案：引导用户手动复制
+                setTimeout(() => {
+                    alert("请长按复制微信号：mcshenjuan");
+                }, 300);
+            } else {
+                // Android设备：直接跳转
+                window.location.href = 'weixin://dl/add?contact=mcshenjuan';
+            }
+            
+            // 通用备选提示
+            setTimeout(() => {
+                const shouldCopy = confirm("跳转失败？是否复制微信号？");
+                if (shouldCopy) {
+                    navigator.clipboard.writeText("mcshenjuan");
+                    alert("微信号已复制！请打开微信添加");
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
