@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>领取专属福利 | 添加微信一对一咨询</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 装饰元素 */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        .bubble:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .bubble:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            right: 7%;
+            animation-delay: -5s;
+        }
+        
+        .bubble:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px 25px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .header {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: #fff;
+        }
+        
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #ffffff, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .counter {
+            display: inline-block;
+            background: rgba(255, 50, 50, 0.25);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 50, 50, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 50, 50, 0); }
+        }
+        
+        /* 福利列表 */
+        .benefits {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .benefit-item {
+            margin: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .benefit-item i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 26px;
+            height: 26px;
+            background: #07C160;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        /* 按钮样式 */
+        .btn-wechat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 18px;
+            background: #07C160;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(7, 193, 96, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .btn-wechat:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(7, 193, 96, 0.5);
+        }
+        
+        .btn-wechat:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-wechat i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+        
+        .tip {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+        
+        /* 手动添加区域 */
+        .manual-add {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .manual-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        
+        .manual-title i {
+            margin-right: 8px;
+        }
+        
+        .wechat-id {
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 10px 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .wechat-id:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .wechat-id:hover .copy-tooltip {
+            opacity: 1;
+        }
+        
+        .note {
+            font-size: 14px;
+            margin-top: 15px;
+            color: #ffd700;
+        }
+        
+        .note span {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .benefit-item {
+                font-size: 14px;
+                padding-left: 30px;
+            }
+            
+            .btn-wechat {
+                padding: 16px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 装饰气泡 -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+    <!-- 主卡片 -->
+    <div class="card">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h1>添加微信领专属福利</h1>
+            <p class="subtitle">资深运营顾问一对一指导，限时福利名额有限</p>
+            <div class="counter">剩余名额: <span id="count">86</span> 人</div>
+        </div>
+        
+        <div class="benefits">
+            <div class="benefit-item">
+                <i class="fas fa-book"></i>
+                <strong>行业秘籍PDF：</strong>《2025最新引流实战指南》
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-comments"></i>
+                <strong>1对1专业咨询：</strong>原价¥299，今日免费
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-users"></i>
+                <strong>高质量交流社群：</strong>对接资源，同行互助
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-video"></i>
+                <strong>独家视频教程：</strong>7天快速起号技巧
+            </div>
+        </div>
+
+        <!-- 跳转按钮 -->
+        <button id="wechatBtn" class="btn-wechat">
+            <i class="fab fa-weixin"></i> 一键跳转微信添加
+        </button>
+        <div class="tip">点击后按提示操作，如未自动跳转请手动打开微信</div>
+        
+        <!-- 手动添加区域 -->
+        <div class="manual-add">
+            <div class="manual-title">
+                <i class="fas fa-hands-helping"></i> 手动添加微信号
+            </div>
+            <div class="wechat-id" id="wechatId">
+                mcshenjuan
+                <div class="copy-tooltip">点击复制</div>
+            </div>
+            <p class="note">添加时请备注 <span>"抖音福利"</span> 领取专属礼包</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 专业运营指导 | 无需服务器部署</p>
+        </div>
+    </div>
+
+    <script>
+        // 随机减少剩余名额（制造紧迫感）
+        function updateCounter() {
+            const countElement = document.getElementById('count');
+            let count = parseInt(countElement.textContent);
+            if (count > 0) {
+                // 每次随机减少1-3个名额
+                const decrease = Math.floor(Math.random() * 3) + 1;
+                count = Math.max(0, count - decrease);
+                countElement.textContent = count;
+                
+                // 每10-30秒更新一次
+                setTimeout(updateCounter, Math.floor(Math.random() * 20000) + 10000);
+            }
+        }
+        
+        // 跳转到微信
+        document.getElementById('wechatBtn').addEventListener('click', function() {
+            // 设备检测
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isAndroid = /Android/.test(navigator.userAgent);
+            
+            try {
+                if (isAndroid) {
+                    // Android设备：直接跳转微信
+                    window.location.href = 'weixin://dl/add?contact=mcshenjuan';
+                } else if (isiOS) {
+                    // iOS设备：尝试跳转（部分版本支持）
+                    window.location.href = 'weixin://dl/add?contact=mcshenjuan';
+                    
+                    // 备用方案：提示用户手动操作
+                    setTimeout(() => {
+                        if (!document.hidden) {
+                            alert("请手动打开微信，搜索微信号: mcshenjuan");
+                        }
+                    }, 500);
+                } else {
+                    // 其他设备：显示复制提示
+                    showCopyPrompt();
+                }
+            } catch (e) {
+                showCopyPrompt();
+            }
+            
+            // 通用备选方案
+            setTimeout(() => {
+                if (!document.hidden) {
+                    showCopyPrompt();
+                }
+            }, 1500);
+        });
+        
+        // 显示复制提示
+        function showCopyPrompt() {
+            const shouldCopy = confirm("跳转失败，是否复制微信号？");
+            if (shouldCopy) {
+                copyWechatId();
+                alert("微信号已复制！请打开微信添加好友");
+            }
+        }
+        
+        // 复制微信号功能
+        document.getElementById('wechatId').addEventListener('click', copyWechatId);
+        
+        function copyWechatId() {
+            navigator.clipboard.writeText("mcshenjuan")
+                .then(() => {
+                    // 显示复制成功反馈
+                    const tooltip = document.querySelector('.copy-tooltip');
+                    tooltip.textContent = '已复制!';
+                    tooltip.style.background = '#07C160';
+                    
+                    setTimeout(() => {
+                        tooltip.textContent = '点击复制';
+                        tooltip.style.background = '#333';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    alert("复制失败，请手动记录微信号: mcshenjuan");
+                });
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounter();
+        });
+    </script>
+</body>
+</html>
