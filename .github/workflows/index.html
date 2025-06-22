@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入QQ群 788766638 - 获取专属资源与交流平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #12a1e8 0%, #0078d7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 装饰元素 */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: float 15s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        .bubble:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .bubble:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            right: 7%;
+            animation-delay: -5s;
+        }
+        
+        .bubble:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .header {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #0078d7 0%, #005a9e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #fff;
+        }
+        
+        .logo i {
+            font-size: 50px;
+            color: #fff;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #ffffff, #c7e6ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+        
+        .group-number {
+            display: inline-block;
+            background: rgba(0, 120, 215, 0.35);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 120, 215, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 120, 215, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 120, 215, 0); }
+        }
+        
+        /* 福利列表 */
+        .benefits {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .benefit-item {
+            margin: 20px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .benefit-item i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: #0078d7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        /* 按钮样式 */
+        .btn-qq {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            background: #12a1e8;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(18, 161, 232, 0.4);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+        
+        .btn-qq:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(18, 161, 232, 0.6);
+            background: #0d8bc9;
+        }
+        
+        .btn-qq:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-qq i {
+            margin-right: 12px;
+            font-size: 26px;
+        }
+        
+        .tip {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        /* 手动添加区域 */
+        .manual-add {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .manual-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #c7e6ff;
+        }
+        
+        .manual-title i {
+            margin-right: 10px;
+        }
+        
+        .copy-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .qq-id {
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .qq-id:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .copy-btn {
+            background: #12a1e8;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #0d8bc9;
+            transform: translateY(-2px);
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .qq-id:hover .copy-tooltip {
+            opacity: 1;
+        }
+        
+        .note {
+            font-size: 14px;
+            margin-top: 15px;
+            color: #c7e6ff;
+        }
+        
+        .note span {
+            background: rgba(199, 230, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* 用户加入记录 */
+        .user-activity {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            max-height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #c7e6ff;
+        }
+        
+        .activity-header i {
+            margin-right: 8px;
+        }
+        
+        .activity-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .activity-item {
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 8px;
+            font-size: 13px;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .activity-item i {
+            color: #c7e6ff;
+            margin-right: 8px;
+        }
+        
+        /* 复制成功提示 */
+        .copy-success {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .copy-success.show {
+            opacity: 1;
+            animation: fadeOut 2s forwards;
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 25px 15px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .group-number {
+                font-size: 20px;
+                padding: 8px 20px;
+            }
+            
+            .benefit-item {
+                font-size: 14px;
+                padding-left: 30px;
+            }
+            
+            .btn-qq {
+                padding: 16px;
+                font-size: 18px;
+            }
+            
+            .copy-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 装饰气泡 -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+    <!-- 主卡片 -->
+    <div class="card">
+        <div class="header">
+            <div class="logo">
+                <i class="fab fa-qq"></i>
+            </div>
+            <h1>加入QQ群 788766638</h1>
+            <p class="subtitle">与志同道合的朋友一起交流学习，获取独家资源与专业指导</p>
+            <div class="group-number">788766638</div>
+        </div>
+        
+        <div class="benefits">
+            <div class="benefit-item">
+                <i class="fas fa-users"></i>
+                <strong>活跃社区：</strong>2000+成员，24小时活跃交流
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-gift"></i>
+                <strong>独家资源：</strong>每周更新学习资料、工具和模板
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <strong>专业指导：</strong>行业专家定期分享经验与答疑
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-calendar-alt"></i>
+                <strong>定期活动：</strong>线上讲座、竞赛与学习打卡
+            </div>
+        </div>
+        
+        <!-- 用户加入记录 -->
+        <div class="user-activity">
+            <div class="activity-header">
+                <i class="fas fa-bolt"></i> 最新加入成员
+            </div>
+            <ul class="activity-list" id="activityList">
+                <li class="activity-item"><i class="fas fa-user-plus"></i> 用户_追梦人 刚刚加入了群聊</li>
+                <li class="activity-item"><i class="fas fa-user-plus"></i> 学习使我快乐 加入了群聊</li>
+            </ul>
+        </div>
+
+        <!-- 跳转按钮 -->
+        <button id="qqBtn" class="btn-qq">
+            <i class="fab fa-qq"></i> 一键加入QQ群
+        </button>
+        <div class="tip">点击按钮将尝试唤起QQ客户端，如未安装QQ请手动添加</div>
+        
+        <!-- 手动添加区域 -->
+        <div class="manual-add">
+            <div class="manual-title">
+                <i class="fas fa-hands-helping"></i> 手动添加方式
+            </div>
+            <div class="copy-box">
+                <div class="qq-id" id="qqId">
+                    788766638
+                    <div class="copy-tooltip">点击复制群号</div>
+                </div>
+                <button class="copy-btn" id="copyBtn">复制群号</button>
+            </div>
+            <p class="note">打开QQ → 点击右上角"+" → 选择"加群/好友" → 输入群号</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 QQ群 788766638 | 开启您的学习交流之旅</p>
+        </div>
+    </div>
+    
+    <!-- 复制成功提示 -->
+    <div class="copy-success" id="copySuccess">
+        <i class="fas fa-check-circle"></i> 群号已复制到剪贴板！
+    </div>
+
+    <script>
+        // 初始化变量
+        let activityItems = [
+            "<i class='fas fa-user-plus'></i> 用户_技术达人 刚刚加入了群聊",
+            "<i class='fas fa-user-plus'></i> 编程爱好者 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 设计小能手 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 学习先锋 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 知识探索者 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 未来之星 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 努力的小白 加入了群聊",
+            "<i class='fas fa-user-plus'></i> 终身学习者 加入了群聊"
+        ];
+        
+        // 添加用户加入记录
+        function addActivityRecord() {
+            const list = document.getElementById('activityList');
+            const randomIndex = Math.floor(Math.random() * activityItems.length);
+            const newItem = document.createElement('li');
+            newItem.className = 'activity-item';
+            newItem.innerHTML = activityItems[randomIndex];
+            
+            // 添加到列表顶部
+            list.insertBefore(newItem, list.firstChild);
+            
+            // 如果超过5条，移除最后一条
+            if (list.children.length > 5) {
+                list.removeChild(list.lastChild);
+            }
+            
+            // 每5-10秒添加一条新记录
+            setTimeout(addActivityRecord, Math.floor(Math.random() * 5000) + 5000);
+        }
+        
+        // 显示复制成功提示
+        function showCopySuccess() {
+            const successElement = document.getElementById('copySuccess');
+            successElement.classList.add('show');
+            
+            setTimeout(() => {
+                successElement.classList.remove('show');
+            }, 2000);
+        }
+        
+        // 加入QQ群功能
+        document.getElementById('qqBtn').addEventListener('click', function() {
+            // 尝试唤起QQ客户端
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // 移动设备使用QQ协议
+                window.location.href = 'mqqapi://card/show_pslcard?src_type=internal&version=1&uin=788766638&card_type=group&source=qrcode';
+                
+                // 备用方案：如果唤起失败，提示用户手动操作
+                setTimeout(() => {
+                    if (!document.hidden) {
+                        showCopyPrompt();
+                    }
+                }, 500);
+            } else {
+                // PC端打开QQ群官网
+                window.open('https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=1dKqUY&from=246610&biz=ka#/pc', '_blank');
+            }
+        });
+        
+        // 显示复制提示
+        function showCopyPrompt() {
+            const shouldCopy = confirm("无法唤起QQ，是否复制群号？");
+            if (shouldCopy) {
+                copyGroupNumber();
+            }
+        }
+        
+        // 复制群号功能
+        document.getElementById('qqId').addEventListener('click', copyGroupNumber);
+        document.getElementById('copyBtn').addEventListener('click', copyGroupNumber);
+        
+        function copyGroupNumber() {
+            navigator.clipboard.writeText("788766638")
+                .then(() => {
+                    // 显示复制成功提示
+                    showCopySuccess();
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    alert("复制失败，请手动记录群号: 788766638");
+                });
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 启动用户活动记录
+            addActivityRecord();
+        });
+    </script>
+</body>
+</html>
